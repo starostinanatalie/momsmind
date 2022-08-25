@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <link rel="stylesheet" href="style.css" />
+    {% if title %}
+    <title>Mom's Mind - {{ title }}</title>
+    {% else %}
+    <title>Welcome to Mom's Mind!</title>
+    {% endif %}
+    {% endblock %}
+</head>
+<body>
+    <div>Mom's Mind Portal:
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    </div>
+        <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2022 by <a href="http://momsmind.online">Mom's Mind Soft</a>.
+        {% endblock %}
+    </div>
+</body>
+</html>
