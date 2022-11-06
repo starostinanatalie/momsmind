@@ -1,4 +1,4 @@
-from app import db
+from portal import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -10,3 +10,5 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+
