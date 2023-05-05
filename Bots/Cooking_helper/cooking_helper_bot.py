@@ -1,8 +1,11 @@
 import time
 import logging
 from aiogram import Bot, Dispatcher, executor, types
+import os
 
-TOKEN = "1501923712:AAEU_qxZm8X7yKF-QRs5CMWoRfYtzLZIRsU"
+with open('credentials.txt', 'r', encoding='cp1252') as credentials:
+    for line in credentials:
+        TOKEN = line
 
 MSG = "What we have for dinner today?"
 
@@ -15,8 +18,10 @@ async def start_handler(message:types.Message):
     user_name = message.from_user.first_name
     user_full_name = message.from_user.full_name
     logging.info(f'{user_id}{user_full_name}{time.asctime()}')
-    await message.reply(f'Hello, {user_name}')
+    await message.reply(f'Hello, {user_name}, {user_id}')
 
 if __name__ == "__main__":
     executor.start_polling(dp)
+
+
 
